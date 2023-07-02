@@ -1,4 +1,6 @@
 # Tank
 A tank war game written with Qt 
 
-All the codes are in the folder Tank and resource pictures are put in the folder tanks
+北京大学程序设计与实习三个桩子组大作业
+
+所有代码存放在Tank文件夹中，图片资源存放再tanks文件夹中
