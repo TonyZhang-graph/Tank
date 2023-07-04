@@ -88,5 +88,6 @@
         <file>resource/Tanks/tankRed_outline.png</file>
         <file>resource/Tanks/tracksLarge.png</file>
         <file>resource/Tanks/tracksSmall.png</file>
+        <file>resource/Environment/sky.png</file>
     </qresource>
 </RCC>

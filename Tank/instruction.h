@@ -7,14 +7,14 @@
 #include <QLabel>
 #include <QString>
 
-class instruction : public QDialog
+class Instruction : public QDialog
 {
     Q_OBJECT
 private:
-    explicit instruction();
+    explicit Instruction();
 
     // one instance mode
-    static instruction* p_instance;
+    static Instruction* p_instance;
 
     // back button
     static QPushButton* back;
@@ -24,7 +24,7 @@ private:
 
 public:
     // one instance API
-    static instruction* get_instance();
+    static Instruction* get_instance();
 };
 
 #endif // INSTRUCTION_H
