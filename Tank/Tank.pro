@@ -11,14 +11,22 @@ CONFIG += c++17
 SOURCES += \
     bullet.cpp \
     gamescene.cpp \
+    instruction.cpp \
     main.cpp \
     gamewindow.cpp \
+    menu.cpp \
+    palse.cpp \
+    setting.cpp \
     tankbase.cpp
 
 HEADERS += \
     bullet.h \
     gamescene.h \
     gamewindow.h \
+    instruction.h \
+    menu.h \
+    palse.h \
+    setting.h \
     tankbase.h
 
 FORMS += \
@@ -28,3 +36,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resource.qrc

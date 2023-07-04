@@ -9,7 +9,7 @@ Bullet::Bullet(QPointF center, qreal heading, QGraphicsItem * _walls[])
     speed = 1;
 
     item = new QGraphicsPixmapItem;
-    QPixmap img("C:/Users/Zhang/Desktop/res/bulletGreen.png");
+    QPixmap img(":/resource/Bullets/bulletGreen.png");
     item->setPixmap(img);
 
     // set initial position

@@ -7,7 +7,7 @@ tankbase::tankbase(QGraphicsItem * _walls[])
     walls = _walls;
 
     item = new QGraphicsPixmapItem;
-    QPixmap img("C:/Users/Zhang/Desktop/res/tankGreen.png");
+    QPixmap img(":/resource/Tanks/tankGreen.png");
     item->setPixmap(img);
     item->setPos(400, 10);
 

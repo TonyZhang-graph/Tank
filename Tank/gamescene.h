@@ -9,6 +9,9 @@
 #include <QTransform>
 #include <QKeyEvent>
 
+#include <QDir>
+#include <QCoreApplication>
+
 #include <QString>
 #include <QGraphicsTextItem>
 #include <list>

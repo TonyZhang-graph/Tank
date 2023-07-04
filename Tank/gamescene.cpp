@@ -4,13 +4,13 @@
 GameScene::GameScene(QObject *parent)
     : QGraphicsScene{parent}
 {
-    bg_img.load("C:/Users/Zhang/Desktop/res/dirt.png");
+    bg_img.load(":/resource/Environment/dirt.png");
 
     // draw background image
     for (int i = 0; i < 49; ++i) {
         background[i].setPixmap(bg_img);
         this->addItem(&background[i]);
-        background[i].setPos((i % 7) * 128, (i / 7) * 128);
+        background[i].setPos((i % 7) << 7, (i / 7) << 7);
     }
 
     // set walls
@@ -26,7 +26,6 @@ GameScene::GameScene(QObject *parent)
 //    sandbag.setPixmap(wall_img);
 //    this->addItem(&sandbag);
 //    sandbag.setPos(100, 100);
-
 
     // set refresh timer
     refresh_timer = new QTimer(this);
@@ -67,40 +66,44 @@ void GameScene::refresh() {
 
 void GameScene::keyPressEvent(QKeyEvent *event){
 
-    if (event->key() == Qt::Key_A) {
+    switch(event->key())
+    {
+    case Qt::Key_A:
         tank->turning_left = true;
-    }
-    else if (event->key() == Qt::Key_D) {
-        tank->turning_right = true;
-    }
-
-    else if (event->key() == Qt::Key_W) {
-        tank->moving = 1;
-    }
-    else if (event->key() == Qt::Key_S) {
+        break;
+    case Qt::Key_S:
         tank->moving = -1;
-    }
+        break;
+    case Qt::Key_D:
+        tank->turning_right = true;
+        break;
+    case Qt::Key_W:
+        tank->moving = 1;
+        break;
 
-    // shot bullet
-    else if (event->key() == Qt::Key_Space) {
+    case Qt::Key_Space:
         auto center = tank->item->mapToScene(tank->item->boundingRect().center());
         bullets.push_back(Bullet(center, tank->heading, walls));
         this->addItem(bullets.back().item);
+        break;
     }
 }
 
 void GameScene::keyReleaseEvent(QKeyEvent *event){
 
-    if (event->key() == Qt::Key_A) {
+    switch(event->key())
+    {
+    case Qt::Key_A:
         tank->turning_left = false;
-    }
-    else if (event->key() == Qt::Key_D) {
+        break;
+    case Qt::Key_S:
+        tank->moving = 0;
+        break;
+    case Qt::Key_D:
         tank->turning_right = false;
-    }
-    else if (event->key() == Qt::Key_W) {
+        break;
+    case Qt::Key_W:
         tank->moving = 0;
-    }
-    else if (event->key() == Qt::Key_S) {
-        tank->moving = 0;
+        break;
     }
 }

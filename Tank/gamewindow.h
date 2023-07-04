@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 
-#include "gamescene.h"
+#include "menu.h"
 #include <QScrollBar>
 #include <QGraphicsScene>
 

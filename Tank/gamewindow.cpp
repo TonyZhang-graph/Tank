@@ -7,8 +7,10 @@ GameWindow::GameWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setFixedSize(896, 896);
+    this->setWindowTitle("Tank Battle");
+    this->setWindowIcon(QIcon(":/resource/Tanks/tankGreen.png"));
 
-    scene = new GameScene;
+    scene = new Menu;
 
     this->ui->view->setScene(scene);
     this->ui->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
