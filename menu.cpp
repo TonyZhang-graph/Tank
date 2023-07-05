@@ -6,8 +6,7 @@ Menu::Menu(QWidget *parent) : QGraphicsScene{parent}
 //    ui = _ui;
 
     // set background image
-    QPixmap bg_img;
-    bg_img.load(":/resource/Environment/sand.png");
+    QPixmap bg_img(":/resource/Environment/sand.png");
     background = new QGraphicsPixmapItem[49];
     QGraphicsPixmapItem *p_background = background;
     for(int i = 0; i < 49; ++i, ++p_background){
@@ -18,37 +17,44 @@ Menu::Menu(QWidget *parent) : QGraphicsScene{parent}
 
     // set title text
     title_text = new QGraphicsTextItem("Tank Battle");
-    title_text->setFont(QFont("Microsoft Yahei", 50));
+    title_text->setFont(QFont("KaiTi", 50));
     title_text->setPos(320, 200);
     this->addItem(title_text);
 
     // set buttons
-    QIcon icon_1 = QIcon(":/resource/Button/button_1.png");
-    QIcon icon_2 = QIcon(":/resource/Button/button_2.png");
+    QString style = QString("QPushButton{height: 30px; width: 100px; background: url(:/resource/Buttons/button_2.png); text-align: center; color: white;}"
+                            "QPushButton:hover {background-color: red;}"
+                            "QPushButton:pressed {background-color: yellow;}");
 
-    _m1_btn = new QPushButton(icon_1, "击杀模式");
+    _m1_btn = new QPushButton("击杀模式");
+    _m1_btn->setStyleSheet(style);
     m1_btn = this->addWidget(_m1_btn);
     m1_btn->setPos(390, 300);
 
-    _m2_btn = new QPushButton(icon_1, "夺旗模式");
+    _m2_btn = new QPushButton("夺旗模式");
+    _m2_btn->setStyleSheet(style);
     m2_btn = this->addWidget(_m2_btn);
-    m2_btn->setPos(390, 350);
+    m2_btn->setPos(390, 375);
 
-    _m3_btn = new QPushButton(icon_1, "踢球模式");
+    _m3_btn = new QPushButton("踢球模式");
+    _m3_btn->setStyleSheet(style);
     m3_btn = this->addWidget(_m3_btn);
-    m3_btn->setPos(390, 400);
+    m3_btn->setPos(390, 450);
 
-    _instr_btn = new QPushButton(icon_1, "游戏帮助");
+    _instr_btn = new QPushButton("游戏帮助");
+    _instr_btn->setStyleSheet(style);
     instr_btn = this->addWidget(_instr_btn);
-    instr_btn->setPos(390, 450);
+    instr_btn->setPos(390, 525);
 
-    _msc_btn = new QPushButton(icon_1, Music_Property::music_state[Music_Property::music]);
+    _msc_btn = new QPushButton(Music_Property::music_state[Music_Property::music]);
+    _msc_btn->setStyleSheet(style);
     msc_btn = this->addWidget(_msc_btn);
-    msc_btn->setPos(390, 500);
+    msc_btn->setPos(390, 600);
 
-    _exit_btn = new QPushButton(icon_1, "退出游戏");
+    _exit_btn = new QPushButton("退出游戏");
+    _exit_btn->setStyleSheet(style);
     exit_btn = this->addWidget(_exit_btn);
-    exit_btn->setPos(390, 550);
+    exit_btn->setPos(390, 670);
 
     // connet signals and slots
     connect(_exit_btn, &QPushButton::clicked, this, &QGraphicsScene::clear);

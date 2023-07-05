@@ -17,6 +17,7 @@ SOURCES += \
     menu.cpp \
     music.cpp \
     palse.cpp \
+    select.cpp \
     tankbase.cpp
 
 HEADERS += \

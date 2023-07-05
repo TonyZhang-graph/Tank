@@ -3,14 +3,13 @@
 
 #include <QFont>
 #include <QPushButton>
-#include <QIcon>
 #include <QGraphicsProxyWidget>
 #include <QMouseEvent>
 
 #include "gamescene.h"
 #include "instruction.h"
-#include "gamewindow.h"
 #include "music.h"
+#include "select.h"
 
 class Menu: public QGraphicsScene
 {

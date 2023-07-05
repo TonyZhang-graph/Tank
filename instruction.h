@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QString>
+#include <QBrush>
 
 class Instruction : public QDialog
 {

@@ -10,7 +10,7 @@
 class tankbase
 {
 public:
-    tankbase(QGraphicsItem* []);
+    tankbase(QGraphicsItem *[]);
 
     QGraphicsPixmapItem *item;
     QGraphicsItem **walls;
