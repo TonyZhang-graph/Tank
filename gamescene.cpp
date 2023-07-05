@@ -1,6 +1,5 @@
 #include "gamescene.h"
 
-
 GameScene::GameScene(QObject *parent)
     : QGraphicsScene{parent}
 {
@@ -57,6 +56,8 @@ void GameScene::refresh() {
         }
     }
 
+    p = nullptr;
+
     // refresh debug text
     auto topleft = tank->item->mapToScene(tank->item->boundingRect().topLeft()), bottomright = tank->item->mapToScene(tank->item->boundingRect().bottomRight());
     text->setPlainText("heading = " + QString::number(tank->heading) + " pos = " + QString::number(tank->item->x()) + ", " + QString::number(tank->item->y())
@@ -79,6 +80,10 @@ void GameScene::keyPressEvent(QKeyEvent *event){
         break;
     case Qt::Key_W:
         tank->moving = 1;
+        break;
+    case Qt::Key_P:
+        p = new Palse(this);
+        p->exec();
         break;
 
     case Qt::Key_Space:

@@ -1,7 +1,10 @@
 #include "menu.h"
 
 Menu::Menu(QWidget *parent) : QGraphicsScene{parent}
-{   
+{
+    // record the ui
+//    ui = _ui;
+
     // set background image
     QPixmap bg_img;
     bg_img.load(":/resource/Environment/sand.png");
@@ -39,7 +42,7 @@ Menu::Menu(QWidget *parent) : QGraphicsScene{parent}
     instr_btn = this->addWidget(_instr_btn);
     instr_btn->setPos(390, 450);
 
-    _msc_btn = new QPushButton(icon_1, music_state[music]);
+    _msc_btn = new QPushButton(icon_1, Music_Property::music_state[Music_Property::music]);
     msc_btn = this->addWidget(_msc_btn);
     msc_btn->setPos(390, 500);
 
@@ -55,10 +58,6 @@ Menu::Menu(QWidget *parent) : QGraphicsScene{parent}
     connect(_m2_btn, &QPushButton::clicked, this, &Menu::start_mode_2);
     connect(_m3_btn, &QPushButton::clicked, this, &Menu::start_mode_3);
 }
-
-bool Menu::music = 1;
-
-QString Menu::music_state[2] = {QString("音乐： 开"), QString("音乐： 关")};
 
 void Menu::show_instruction_box()
 {
@@ -82,8 +81,8 @@ void Menu::start_mode_3()
 
 void Menu::change_music()
 {
-    Menu::music ^= 1;
-    _msc_btn->setText(music_state[music]);
+    Music_Property::music ^= 1;
+    _msc_btn->setText(Music_Property::music_state[Music_Property::music]);
 }
 
 Menu::~Menu()

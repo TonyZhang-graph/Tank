@@ -5,15 +5,16 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QGraphicsScene>
+#include <QString>
 
-#include <menu.h>
+#include "music.h"
 
-class palse: public QDialog
+class Palse : public QDialog
 {
     Q_OBJECT
 public:
-    explicit palse(QGraphicsScene* parent);
-    ~palse();
+    explicit Palse(QGraphicsScene* parent);
+    ~Palse();
 
 private:
     // record the parent in order to back to the menu

@@ -1,6 +1,6 @@
-#include <palse.h>
+#include "palse.h"
 
-palse::palse(QGraphicsScene *parent): QDialog(nullptr)
+Palse::Palse(QGraphicsScene *parent): QDialog(nullptr)
 {
     this->setFixedSize(786, 786);
 
@@ -19,13 +19,14 @@ palse::palse(QGraphicsScene *parent): QDialog(nullptr)
     back_to_game->move(350, 400);
     back_to_menu = new QPushButton("返回菜单", this);
     back_to_menu->move(350, 500);
-    music_state = new QPushButton(Menu::music_state[Menu::music], this);
+    music_state = new QPushButton(Music_Property::music_state[Music_Property::music], this);
     music_state->move(350, 600);
     connect(back_to_game, &QPushButton::clicked, this, &QDialog::close);
-    connect(back_to_menu, &QPushButton::clicked, this, &palse::go_back_to_menu);
+    connect(back_to_menu, &QPushButton::clicked, this, &Palse::go_back_to_menu);
+    connect(music_state, &QPushButton::clicked, this, &Palse::change_music);
 }
 
-void palse::go_back_to_menu()
+void Palse::go_back_to_menu()
 {
     this->close();
     _parent->clear();
@@ -34,13 +35,13 @@ void palse::go_back_to_menu()
 
 }
 
-void palse::change_music()
+void Palse::change_music()
 {
-    Menu::music ^= 1;
-    music_state->setText(Menu::music_state[Menu::music]);
+    Music_Property::music ^= 1;
+    music_state->setText(Music_Property::music_state[Music_Property::music]);
 }
 
-palse::~palse()
+Palse::~Palse()
 {
     delete title_text;
     delete back_to_game;

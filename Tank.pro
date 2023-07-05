@@ -15,6 +15,7 @@ SOURCES += \
     main.cpp \
     gamewindow.cpp \
     menu.cpp \
+    music.cpp \
     palse.cpp \
     tankbase.cpp
 
@@ -24,7 +25,9 @@ HEADERS += \
     gamewindow.h \
     instruction.h \
     menu.h \
+    music.h \
     palse.h \
+    select.h \
     tankbase.h
 
 FORMS += \

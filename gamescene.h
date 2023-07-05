@@ -3,14 +3,9 @@
 
 #include <QObject>
 #include <QGraphicsScene>
-#include <QGraphicsPixmapItem>
-#include <QGraphicsTextItem>
 #include <QTimer>
 #include <QTransform>
 #include <QKeyEvent>
-
-#include <QDir>
-#include <QCoreApplication>
 
 #include <QString>
 #include <QGraphicsTextItem>
@@ -18,6 +13,7 @@
 
 #include "bullet.h"
 #include "tankbase.h"
+#include "palse.h"
 
 class GameScene : public QGraphicsScene
 {
@@ -37,6 +33,8 @@ public:
     void keyReleaseEvent(QKeyEvent *event) override;
 
     tankbase *tank;
+
+    Palse *p;
 signals:
 
 };

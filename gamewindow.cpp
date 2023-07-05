@@ -10,7 +10,7 @@ GameWindow::GameWindow(QWidget *parent)
     this->setWindowTitle("Tank Battle");
     this->setWindowIcon(QIcon(":/resource/Tanks/tankGreen.png"));
 
-    scene = new Menu;
+    scene = new GameScene;
 
     this->ui->view->setScene(scene);
     this->ui->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -26,4 +26,3 @@ GameWindow::~GameWindow()
     delete ui;
     delete scene;
 }
-

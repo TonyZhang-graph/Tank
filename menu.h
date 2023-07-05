@@ -9,6 +9,8 @@
 
 #include "gamescene.h"
 #include "instruction.h"
+#include "gamewindow.h"
+#include "music.h"
 
 class Menu: public QGraphicsScene
 {
@@ -25,9 +27,8 @@ public:
     QGraphicsProxyWidget *m1_btn, *m2_btn, *m3_btn;
     QGraphicsProxyWidget *instr_btn, *msc_btn, *exit_btn;
 
-    static bool music;
-
-    static QString music_state[2];
+    // record the ui for scene shifting
+//    GameWindow *ui;
 
 private:
     QGraphicsPixmapItem *background;
