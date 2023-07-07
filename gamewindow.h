@@ -1,9 +1,10 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
+#pragma once
+
 #include <QMainWindow>
 
-#include "menu.h"
 #include <QScrollBar>
 #include <QGraphicsScene>
 
@@ -17,12 +18,13 @@ class GameWindow : public QMainWindow
 
 public:
     GameWindow(QWidget *parent = nullptr);
-    ~GameWindow();
+    virtual ~GameWindow();
 
     QGraphicsScene *scene;
 
-private:
     Ui::GameWindow *ui;
+
+    void set_scene(QGraphicsScene *_scene);
 
 };
 #endif // GAMEWINDOW_H

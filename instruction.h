@@ -1,12 +1,14 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
+#pragma once
+
 #include <QDialog>
 #include <QWidget>
-#include <QPushButton>
 #include <QLabel>
 #include <QString>
-#include <QBrush>
+
+#include "button.h"
 
 class Instruction : public QDialog
 {
@@ -18,7 +20,7 @@ private:
     static Instruction* p_instance;
 
     // back button
-    static QPushButton* back;
+    static Button* back;
 
     // instruction text
     static QLabel* instr;

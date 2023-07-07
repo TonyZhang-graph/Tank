@@ -2,12 +2,12 @@
 
 const qreal convert = acos(0) / 90;
 
-tankbase::tankbase(QGraphicsItem * _walls[])
+tankbase::tankbase(const QString &img_url, QGraphicsItem * _walls[])
 {
     walls = _walls;
 
     item = new QGraphicsPixmapItem;
-    QPixmap img(":/resource/Tanks/tankGreen.png");
+    QPixmap img(img_url);
     item->setPixmap(img);
     item->setPos(400, 10);
 

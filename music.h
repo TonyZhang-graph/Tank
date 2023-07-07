@@ -1,6 +1,8 @@
 #ifndef MUSIC_H
 #define MUSIC_H
 
+#pragma once
+
 #include <QString>
 
 class Music_Property

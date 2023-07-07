@@ -1,16 +1,19 @@
 #ifndef TANKBASE_H
 #define TANKBASE_H
 
+#pragma once
+
 #include <QGraphicsPixmapItem>
 #include <QTransform>
 #include <QtMath>
+#include <QString>
 
 #include <QDebug>
 
 class tankbase
 {
 public:
-    tankbase(QGraphicsItem *[]);
+    tankbase(const QString &img_url, QGraphicsItem *[]);
 
     QGraphicsPixmapItem *item;
     QGraphicsItem **walls;

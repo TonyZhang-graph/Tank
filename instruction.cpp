@@ -7,11 +7,7 @@ Instruction::Instruction() : QDialog(nullptr)
     const QString intro = "坦克大战是一款爆火的游戏";
 
     // back button
-    back = new QPushButton("返回菜单", this);
-    QString style = QString("QPushButton{height: 30px; width: 100px; background: url(:/resource/Buttons/button_2.png); text-align: center; color: white;}"
-                            "QPushButton:hover {background-color: red;}"
-                            "QPushButton:pressed {background-color: yellow;}");
-    back->setStyleSheet(style);
+    back = new Button("返回菜单", this);
     back->setGeometry(350, 700, 100, 50);
     connect(back, &QPushButton::clicked, this, &QDialog::close);
 
@@ -24,7 +20,7 @@ Instruction::Instruction() : QDialog(nullptr)
 
 Instruction* Instruction::p_instance = nullptr;
 
-QPushButton* Instruction::back = nullptr;
+Button* Instruction::back = nullptr;
 
 QLabel* Instruction::instr = nullptr;
 

@@ -1,6 +1,8 @@
 #ifndef BULLET_H
 #define BULLET_H
 
+#pragma once
+
 #include <QGraphicsPixmapItem>
 #include <QTransform>
 #include <QtMath>

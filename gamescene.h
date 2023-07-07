@@ -1,6 +1,8 @@
 #ifndef GAMESCENE_H
 #define GAMESCENE_H
 
+#pragma once
+
 #include <QObject>
 #include <QGraphicsScene>
 #include <QTimer>
@@ -14,27 +16,28 @@
 #include "bullet.h"
 #include "tankbase.h"
 #include "palse.h"
+#include "gamewindow.h"
 
 class GameScene : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    explicit GameScene(QObject *parent = nullptr);
+    explicit GameScene(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_url, QString *tanks, QObject *parent = nullptr);
     QGraphicsPixmapItem background[49];
-    QPixmap bg_img;
-    QGraphicsTextItem *text;
+
     QGraphicsItem* walls[40] = {NULL};
     std::list<Bullet> bullets;
 
     QTimer *refresh_timer;
+
+    GameWindow *ui;
+    QGraphicsScene *menu;
 
     void refresh();
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 
     tankbase *tank;
-
-    Palse *p;
 signals:
 
 };

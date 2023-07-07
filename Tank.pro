@@ -10,26 +10,40 @@ CONFIG += c++17
 
 SOURCES += \
     bullet.cpp \
+    button.cpp \
+    choice_box_base.cpp \
     gamescene.cpp \
     instruction.cpp \
     main.cpp \
     gamewindow.cpp \
     menu.cpp \
+    mode_choice.cpp \
     music.cpp \
     palse.cpp \
+    scene_choice.cpp \
     select.cpp \
-    tankbase.cpp
+    tank_choice.cpp \
+    tankbase.cpp \
+    warning.cpp \
+    window.cpp
 
 HEADERS += \
     bullet.h \
+    button.h \
+    choice_box_base.h \
     gamescene.h \
     gamewindow.h \
     instruction.h \
     menu.h \
+    mode_choice.h \
     music.h \
     palse.h \
+    scene_choice.h \
     select.h \
-    tankbase.h
+    tank_choice.h \
+    tankbase.h \
+    warning.h \
+    window.h
 
 FORMS += \
     gamewindow.ui
