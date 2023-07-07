@@ -59,7 +59,9 @@ void Soccer_Mode::keyPressEvent(QKeyEvent *event)
     {
     // 1P
     case Qt::Key_P:
+        refresh_timer->stop();
         Palse(ui, menu).exec();
+        refresh_timer->start();
         break;
 
     case Qt::Key_A:
