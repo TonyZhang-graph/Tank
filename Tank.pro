@@ -22,6 +22,7 @@ SOURCES += \
     palse.cpp \
     scene_choice.cpp \
     select.cpp \
+    tank.cpp \
     tank_choice.cpp \
     tankbase.cpp \
     warning.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     palse.h \
     scene_choice.h \
     select.h \
+    tank.h \
     tank_choice.h \
     tankbase.h \
     warning.h \

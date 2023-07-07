@@ -24,8 +24,13 @@ GameScene::GameScene(GameWindow *_ui,QGraphicsScene *_menu, const QString &img_u
     refresh_timer->start(3);
 
     // tank
-    tank = new tankbase(tanks[0], walls);
-    this->addItem(tank->item);
+    tank[0] = Tank(tanks[0].mid(21, 1), walls);
+    tank[0]->item->setPos(400, 100);
+    this->addItem(tank[0]->item);
+
+    tank[1] = Tank(tanks[1].mid(21, 1), walls);
+    tank[1]->item->setPos(100, 400);
+    this->addItem(tank[1]->item);
 
     ui = _ui;
     menu = _menu;
@@ -34,43 +39,70 @@ GameScene::GameScene(GameWindow *_ui,QGraphicsScene *_menu, const QString &img_u
 void GameScene::refresh() {
 
     // refresh tank
-    tank->refresh();
+    tank[0]->refresh();
+    tank[1]->refresh();
 
     // refresh bullets
-    std::list<Bullet>::iterator it;
-    for (it = bullets.begin(); it != bullets.end(); ++it) {
+    QList<Bullet>::iterator it;
+    for (it = bullets.begin(); it != bullets.end();) {
         it->refresh();
 
-        if (it->collide_with_walls()) {
+        if (it->collide_with_walls())
+        {
             this->removeItem(it->item);
             bullets.erase(it);
+        }
+        else
+        {
+            ++it;
         }
     }
 }
 
-void GameScene::keyPressEvent(QKeyEvent *event){
-
+void GameScene::keyPressEvent(QKeyEvent *event)
+{
+    QPointF center;
     switch(event->key())
     {
-    case Qt::Key_A:
-        tank->turning_left = true;
-        break;
-    case Qt::Key_S:
-        tank->moving = -1;
-        break;
-    case Qt::Key_D:
-        tank->turning_right = true;
-        break;
-    case Qt::Key_W:
-        tank->moving = 1;
-        break;
     case Qt::Key_P:
         Palse(ui, menu).exec();
         break;
 
-    case Qt::Key_Space:
-        auto center = tank->item->mapToScene(tank->item->boundingRect().center());
-        bullets.push_back(Bullet(center, tank->heading, walls));
+    case Qt::Key_A:
+        tank[0]->turning_left = true;
+        break;
+    case Qt::Key_S:
+        tank[0]->moving = -1;
+        break;
+    case Qt::Key_D:
+        tank[0]->turning_right = true;
+        break;
+    case Qt::Key_W:
+        tank[0]->moving = 1;
+        break;
+
+    case Qt::Key_Q:
+        center = tank[0]->item->mapToScene(tank[0]->item->boundingRect().center());
+        bullets.push_back(Bullet(center, tank[0]->heading, walls));
+        this->addItem(bullets.back().item);
+        break;
+
+    case Qt::Key_J:
+        tank[1]->turning_left = true;
+        break;
+    case Qt::Key_K:
+        tank[1]->moving = -1;
+        break;
+    case Qt::Key_L:
+        tank[1]->turning_right = true;
+        break;
+    case Qt::Key_I:
+        tank[1]->moving = 1;
+        break;
+
+    case Qt::Key_U:
+        center = tank[1]->item->mapToScene(tank[1]->item->boundingRect().center());
+        bullets.push_back(Bullet(center, tank[1]->heading, walls));
         this->addItem(bullets.back().item);
         break;
     }
@@ -81,16 +113,29 @@ void GameScene::keyReleaseEvent(QKeyEvent *event){
     switch(event->key())
     {
     case Qt::Key_A:
-        tank->turning_left = false;
+        tank[0]->turning_left = false;
         break;
     case Qt::Key_S:
-        tank->moving = 0;
+        tank[0]->moving = 0;
         break;
     case Qt::Key_D:
-        tank->turning_right = false;
+        tank[0]->turning_right = false;
         break;
     case Qt::Key_W:
-        tank->moving = 0;
+        tank[0]->moving = 0;
+        break;
+
+    case Qt::Key_J:
+        tank[1]->turning_left = false;
+        break;
+    case Qt::Key_K:
+        tank[1]->moving = 0;
+        break;
+    case Qt::Key_L:
+        tank[1]->turning_right = false;
+        break;
+    case Qt::Key_I:
+        tank[1]->moving = 0;
         break;
     }
 }

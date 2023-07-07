@@ -11,10 +11,10 @@
 
 #include <QString>
 #include <QGraphicsTextItem>
-#include <list>
+#include <QList>
 
 #include "bullet.h"
-#include "tankbase.h"
+#include "tank.h"
 #include "palse.h"
 #include "gamewindow.h"
 
@@ -26,7 +26,7 @@ public:
     QGraphicsPixmapItem background[49];
 
     QGraphicsItem* walls[40] = {NULL};
-    std::list<Bullet> bullets;
+    QList<Bullet> bullets;
 
     QTimer *refresh_timer;
 
@@ -37,7 +37,7 @@ public:
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
 
-    tankbase *tank;
+    tankbase *tank[2];
 signals:
 
 };

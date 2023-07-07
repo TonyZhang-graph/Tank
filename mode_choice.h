@@ -24,7 +24,7 @@ public:
     static void reset();
 
 private:
-    int be_chosen;
+    bool be_chosen;
 
     static QString chosen_style, default_style;
 };

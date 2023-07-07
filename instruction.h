@@ -5,10 +5,10 @@
 
 #include <QDialog>
 #include <QWidget>
+#include <QPushButton>
 #include <QLabel>
 #include <QString>
-
-#include "button.h"
+#include <QBrush>
 
 class Instruction : public QDialog
 {
@@ -20,7 +20,7 @@ private:
     static Instruction* p_instance;
 
     // back button
-    static Button* back;
+    static QPushButton* back;
 
     // instruction text
     static QLabel* instr;
