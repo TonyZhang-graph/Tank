@@ -10,6 +10,8 @@ class Music_Property
 public:
     static bool music;
 
+    static QString music_url;
+
     static QString music_state[2];
 };
 

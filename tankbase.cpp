@@ -21,8 +21,8 @@ tankbase::tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img
     hp = max_hp;
 }
 
-bool tankbase::collide_with_walls() {
-
+bool tankbase::collide_with_walls()
+{
     for (int i = 0; walls[i] != NULL; ++i)
     {
         if (item->collidesWithItem(walls[i]))
@@ -86,7 +86,7 @@ void tankbase::refresh()
 
 bool tankbase::is_dead()
 {
-    return !hp;
+    return hp == 0;
 }
 
 QPixmap tankbase::img_with_blood_box(QPixmap img)
@@ -95,11 +95,16 @@ QPixmap tankbase::img_with_blood_box(QPixmap img)
     QPainter *painter = new QPainter(&img);
     painter->setBrush(Qt::SolidPattern);
     painter->setBrush(Qt::gray);
-    painter->drawRect(x - 15, y - 5, max_hp * 10, 10);
+    painter->drawRect(x - 15, y - 5, max_hp, 10);
     painter->setBrush(Qt::red);
-    painter->drawRect(x - 15, y - 5, hp * 10, 10);
+    painter->drawRect(x - 15, y - 5, hp, 10);
     delete painter;
     return img;
+}
+
+void tankbase::hurted(const qint8 &attack_value)
+{
+    hp = qMax(0, hp - attack_value);
 }
 
 tankbase::~tankbase()

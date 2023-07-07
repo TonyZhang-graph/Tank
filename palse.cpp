@@ -42,6 +42,7 @@ void Palse::change_music()
 {
     Music_Property::music ^= 1;
     music_state->setText(Music_Property::music_state[Music_Property::music]);
+    ui->change_music_state();
 }
 
 Palse::~Palse()

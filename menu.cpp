@@ -59,6 +59,7 @@ void Menu::change_music()
 {
     Music_Property::music ^= 1;
     _msc_btn->setText(Music_Property::music_state[Music_Property::music]);
+    ui->change_music_state();
 }
 
 Menu::~Menu()

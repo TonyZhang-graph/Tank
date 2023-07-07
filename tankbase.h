@@ -32,6 +32,7 @@ public:
     void refresh();
     bool collide_with_walls();
     bool is_dead();
+    void hurted(const qint8 &attack_value);
     QPixmap img_with_blood_box(QPixmap img);
 };
 

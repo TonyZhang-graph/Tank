@@ -17,6 +17,8 @@ public:
     QGraphicsPixmapItem *item;
     QGraphicsItem **walls;
 
+    qint8 attack_value;
+
     void refresh();
     bool collide_with_walls();
 };

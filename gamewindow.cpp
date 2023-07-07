@@ -11,6 +11,12 @@ GameWindow::GameWindow(QWidget *parent)
     this->setWindowIcon(QIcon(":/resource/Tanks/tankGreen.png"));
 
     scene = nullptr;
+
+    music = new QSoundEffect;
+    music->setSource(QUrl::fromLocalFile(Music_Property::music_url));
+    music->setLoopCount(QSoundEffect::Infinite);
+    music->setVolume(0.5f);
+    music->play();
 }
 
 void GameWindow::set_scene(QGraphicsScene *_scene)
@@ -34,4 +40,16 @@ GameWindow::~GameWindow()
 {
     delete ui;
     delete scene;
+}
+
+void GameWindow::change_music_state()
+{
+    if(Music_Property::music)
+    {
+        music->play();
+    }
+    else
+    {
+        music->stop();
+    }
 }

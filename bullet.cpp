@@ -8,6 +8,8 @@ Bullet::Bullet(QPointF center, qreal heading, QGraphicsItem * _walls[])
 
     speed = 1;
 
+    attack_value = 5;
+
     item = new QGraphicsPixmapItem;
     QPixmap img(":/resource/Bullets/bulletGreen.png");
     item->setPixmap(img);
