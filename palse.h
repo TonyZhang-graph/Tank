@@ -1,6 +1,8 @@
 #ifndef PALSE_H
 #define PALSE_H
 
+#pragma once
+
 #include <QDialog>
 #include <QPushButton>
 #include <QLabel>
@@ -8,25 +10,28 @@
 #include <QString>
 
 #include "music.h"
+#include "gamewindow.h"
+#include "button.h"
 
 class Palse : public QDialog
 {
     Q_OBJECT
 public:
-    explicit Palse(QGraphicsScene* parent);
+    explicit Palse(GameWindow *_ui, QGraphicsScene* menu);
     ~Palse();
 
 private:
-    // record the parent in order to back to the menu
-    QGraphicsScene* _parent;
-
     // buttons
-    QPushButton* back_to_game;
-    QPushButton* back_to_menu;
-    QPushButton* music_state;
+    Button* back_to_game;
+    Button* back_to_menu;
+    Button* music_state;
 
     // title
     QLabel* title_text;
+
+    // menu
+    GameWindow *ui;
+    QGraphicsScene *_menu;
 
 public slots:
     void go_back_to_menu();

@@ -1,15 +1,17 @@
 #include "gamescene.h"
 
-GameScene::GameScene(QObject *parent)
-    : QGraphicsScene{parent}
+GameScene::GameScene(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_url, QString *tanks, QObject *parent) : QGraphicsScene{parent}
 {
-    bg_img.load(":/resource/Environment/dirt.png");
+    QPixmap bg_img(img_url);
+
+    background = new QGraphicsPixmapItem[49];
+    QGraphicsPixmapItem *p_background = background;
 
     // draw background image
-    for (int i = 0; i < 49; ++i) {
-        background[i].setPixmap(bg_img);
-        this->addItem(&background[i]);
-        background[i].setPos((i % 7) << 7, (i / 7) << 7);
+    for (int i = 0; i < 49; ++i, ++p_background) {
+        p_background->setPixmap(bg_img);
+        this->addItem(p_background);
+        p_background->setPos((i % 7) << 7, (i / 7) << 7);
     }
 
     // set walls
@@ -18,13 +20,6 @@ GameScene::GameScene(QObject *parent)
     walls[2] = new QGraphicsRectItem(-10, 0, 10, 896);
     walls[3] = new QGraphicsRectItem(896, 0, 10, 896);
 
-    // set map
-//    QPixmap wall_img;
-//    wall_img.load("C:/Users/Zhang/Desktop/res/sandbagBeige.png");
-//    QGraphicsPixmapItem sandbag;
-//    sandbag.setPixmap(wall_img);
-//    this->addItem(&sandbag);
-//    sandbag.setPos(100, 100);
 
     // set refresh timer
     refresh_timer = new QTimer(this);
@@ -32,63 +27,78 @@ GameScene::GameScene(QObject *parent)
     refresh_timer->start(3);
 
     // tank
-    tank = new tankbase(walls);
-    this->addItem(tank->item);
+    tank[0] = Tank(tanks[0].mid(21, 1), walls);
+    tank[0]->item->setPos(400, 100);
+    this->addItem(tank[0]->item);
 
-    // debug text
-    text = new QGraphicsTextItem;
-    this->addItem(text);
+    tank[1] = Tank(tanks[1].mid(21, 1), walls);
+    tank[1]->item->setPos(100, 400);
+    this->addItem(tank[1]->item);
+
+    ui = _ui;
+    menu = _menu;
 }
 
 void GameScene::refresh() {
 
     // refresh tank
-    tank->refresh();
+    tank[0]->refresh();
+    tank[1]->refresh();
 
     // refresh bullets
-    std::list<Bullet>::iterator it;
+    QList<Bullet>::iterator it;
     for (it = bullets.begin(); it != bullets.end(); ++it) {
         it->refresh();
 
-        if (it->collide_with_walls()) {
+        if (it->time == 3)
+        {
             this->removeItem(it->item);
             bullets.erase(it);
         }
     }
-
-    p = nullptr;
-
-    // refresh debug text
-    auto topleft = tank->item->mapToScene(tank->item->boundingRect().topLeft()), bottomright = tank->item->mapToScene(tank->item->boundingRect().bottomRight());
-    text->setPlainText("heading = " + QString::number(tank->heading) + " pos = " + QString::number(tank->item->x()) + ", " + QString::number(tank->item->y())
-                       + "\nBounding Rect: " + QString::number(topleft.x()) + ", " + QString::number(topleft.y()) + "; " + QString::number(bottomright.x()) + ", " + QString::number(bottomright.y())
-                       + "\nNumber of Bullets: " + QString::number(bullets.size()));
 }
 
-void GameScene::keyPressEvent(QKeyEvent *event){
-
+void GameScene::keyPressEvent(QKeyEvent *event)
+{
     switch(event->key())
     {
-    case Qt::Key_A:
-        tank->turning_left = true;
-        break;
-    case Qt::Key_S:
-        tank->moving = -1;
-        break;
-    case Qt::Key_D:
-        tank->turning_right = true;
-        break;
-    case Qt::Key_W:
-        tank->moving = 1;
-        break;
     case Qt::Key_P:
-        p = new Palse(this);
-        p->exec();
+        Palse(ui, menu).exec();
         break;
 
-    case Qt::Key_Space:
-        auto center = tank->item->mapToScene(tank->item->boundingRect().center());
-        bullets.push_back(Bullet(center, tank->heading, walls));
+    case Qt::Key_A:
+        tank[0]->turning_left = true;
+        break;
+    case Qt::Key_S:
+        tank[0]->moving = -1;
+        break;
+    case Qt::Key_D:
+        tank[0]->turning_right = true;
+        break;
+    case Qt::Key_W:
+        tank[0]->moving = 1;
+        break;
+
+    case Qt::Key_Q:
+        bullets.push_back(tank[0]->new_bullet());
+        this->addItem(bullets.back().item);
+        break;
+
+    case Qt::Key_J:
+        tank[1]->turning_left = true;
+        break;
+    case Qt::Key_K:
+        tank[1]->moving = -1;
+        break;
+    case Qt::Key_L:
+        tank[1]->turning_right = true;
+        break;
+    case Qt::Key_I:
+        tank[1]->moving = 1;
+        break;
+
+    case Qt::Key_U:
+        bullets.push_back(tank[1]->new_bullet());
         this->addItem(bullets.back().item);
         break;
     }
@@ -99,16 +109,29 @@ void GameScene::keyReleaseEvent(QKeyEvent *event){
     switch(event->key())
     {
     case Qt::Key_A:
-        tank->turning_left = false;
+        tank[0]->turning_left = false;
         break;
     case Qt::Key_S:
-        tank->moving = 0;
+        tank[0]->moving = 0;
         break;
     case Qt::Key_D:
-        tank->turning_right = false;
+        tank[0]->turning_right = false;
         break;
     case Qt::Key_W:
-        tank->moving = 0;
+        tank[0]->moving = 0;
+        break;
+
+    case Qt::Key_J:
+        tank[1]->turning_left = false;
+        break;
+    case Qt::Key_K:
+        tank[1]->moving = 0;
+        break;
+    case Qt::Key_L:
+        tank[1]->turning_right = false;
+        break;
+    case Qt::Key_I:
+        tank[1]->moving = 0;
         break;
     }
 }

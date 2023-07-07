@@ -1,11 +1,14 @@
 #ifndef INSTRUCTION_H
 #define INSTRUCTION_H
 
+#pragma once
+
 #include <QDialog>
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
 #include <QString>
+#include <QBrush>
 
 class Instruction : public QDialog
 {

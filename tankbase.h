@@ -1,25 +1,43 @@
 #ifndef TANKBASE_H
 #define TANKBASE_H
 
+#pragma once
+
 #include <QGraphicsPixmapItem>
 #include <QTransform>
 #include <QtMath>
+#include <QString>
+#include <QPainter>
 
-#include <QDebug>
+#include "bullet.h"
 
 class tankbase
 {
 public:
-    tankbase(QGraphicsItem* []);
+    tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img_url, QGraphicsItem **_walls);
+    virtual ~tankbase();
+
+    static qreal convert;
+
+    QPixmap img;
 
     QGraphicsPixmapItem *item;
     QGraphicsItem **walls;
-    qreal heading, speed;
+
+    qreal heading;
+    qint8 hp;
     int moving;
     bool turning_left, turning_right;
+    qint8 max_hp;
+    qreal speed;
 
     void refresh();
     bool collide_with_walls();
+    bool is_dead();
+    void hurted(const qint8 &attack_value);
+    QPixmap img_with_blood_box(QPixmap img);
+    virtual Bullet new_bullet() = 0;
+
 };
 
 #endif // TANKBASE_H

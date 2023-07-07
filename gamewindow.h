@@ -1,11 +1,14 @@
 #ifndef GAMEWINDOW_H
 #define GAMEWINDOW_H
 
-#include <QMainWindow>
+#pragma once
 
-#include "menu.h"
+#include <QMainWindow>
+#include <QSoundEffect>
 #include <QScrollBar>
 #include <QGraphicsScene>
+
+#include "music.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class GameWindow; }
@@ -17,12 +20,19 @@ class GameWindow : public QMainWindow
 
 public:
     GameWindow(QWidget *parent = nullptr);
-    ~GameWindow();
+    virtual ~GameWindow();
 
     QGraphicsScene *scene;
 
-private:
     Ui::GameWindow *ui;
+
+    void set_scene(QGraphicsScene *_scene);
+
+private:
+    QSoundEffect *music;
+
+public slots:
+    void change_music_state();
 
 };
 #endif // GAMEWINDOW_H
