@@ -9,12 +9,10 @@
 #include <QString>
 #include <QPainter>
 
-#include "bullet.h"
-
 class tankbase
 {
 public:
-    tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img_url, QGraphicsItem **_walls);
+    tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img_url, const QString &_bullet_url, QGraphicsItem **_walls);
     virtual ~tankbase();
 
     static qreal convert;
@@ -31,13 +29,16 @@ public:
     qint8 max_hp;
     qreal speed;
 
+    QString bullet_url;
+
+    tankbase *enemy;
+
     void refresh();
     bool collide_with_walls();
     bool is_dead();
     void hurted(const qint8 &attack_value);
     QPixmap img_with_blood_box(QPixmap img);
-    virtual Bullet new_bullet() = 0;
-
+    void set_enemy(tankbase *_enemy);
 };
 
 #endif // TANKBASE_H

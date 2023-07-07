@@ -2,23 +2,25 @@
 
 qreal tankbase::convert = acos(0) / 90;
 
-tankbase::tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img_url, QGraphicsItem **_walls)
+tankbase::tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img_url, const QString &_bullet_url, QGraphicsItem **_walls)
 {
     walls = _walls;
+
+    speed = _speed, max_hp = _max_hp;
+
+    hp = max_hp;
+
+    enemy = nullptr;
 
     img.load(img_url);
 
     item = new QGraphicsPixmapItem;
     item->setPixmap(img_with_blood_box(img));
 
-    heading = 0;
-    moving = 0;
-    turning_left = false;
-    turning_right = false;
+    heading = moving = 0;
+    turning_left = turning_right = false;
 
-    speed = _speed, max_hp = _max_hp;
-
-    hp = max_hp;
+    bullet_url = _bullet_url;
 }
 
 bool tankbase::collide_with_walls()
@@ -79,9 +81,12 @@ void tankbase::refresh()
         {
             item->setPos(x, y);
         }
+        if(enemy != nullptr && item->collidesWithItem(enemy->item))
+        {
+            item->setPos(x, y);
+        }
     }
 
-    item->setPixmap(img_with_blood_box(img));
 }
 
 bool tankbase::is_dead()
@@ -105,6 +110,12 @@ QPixmap tankbase::img_with_blood_box(QPixmap img)
 void tankbase::hurted(const qint8 &attack_value)
 {
     hp = qMax(0, hp - attack_value);
+    item->setPixmap(img_with_blood_box(img));
+}
+
+void tankbase::set_enemy(tankbase *_enemy)
+{
+    enemy = _enemy;
 }
 
 tankbase::~tankbase()

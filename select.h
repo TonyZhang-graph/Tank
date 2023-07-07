@@ -16,7 +16,8 @@
 #include "button.h"
 #include "warning.h"
 #include "tankbase.h"
-#include "gamescene.h"
+#include "soccer_mode.h"
+#include "kill_mode.h"
 
 class Select :public QGraphicsScene
 {
@@ -33,7 +34,7 @@ private:
     GameWindow *ui;
 
     // record the mode
-    GameScene *game;
+    Kill_Mode *game;
 
     // the background
     QGraphicsPixmapItem *background;

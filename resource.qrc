@@ -90,5 +90,7 @@
         <file>resource/Tanks/tracksSmall.png</file>
         <file>resource/Environment/sky.png</file>
         <file>resource/Music/happy.wav</file>
+        <file>resource/Ball/ball.png</file>
+        <file>resource/Ball/SoccerBall.png</file>
     </qresource>
 </RCC>

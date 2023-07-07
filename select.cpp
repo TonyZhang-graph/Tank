@@ -113,8 +113,15 @@ void Select::go_to_game()
 
     QString mode_chosen = Mode_Choice::chose_type;
 
-    // to be completed
-    ui->set_scene(new GameScene(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
+    if(mode_chosen == "踢球")
+    {
+        ui->set_scene(new Soccer_Mode(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
+    }
+    else
+    {
+        // to be completed
+        ui->set_scene(new Kill_Mode(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
+    }
 
     Tank_Choice::reset();
     Scene_Choice::reset();

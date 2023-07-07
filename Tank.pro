@@ -10,11 +10,14 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ball.cpp \
     bullet.cpp \
     button.cpp \
     choice_box_base.cpp \
-    gamescene.cpp \
+    conquer_mode.cpp \
+    fight_tank.cpp \
     instruction.cpp \
+    kill_mode.cpp \
     main.cpp \
     gamewindow.cpp \
     menu.cpp \
@@ -22,27 +25,34 @@ SOURCES += \
     music.cpp \
     palse.cpp \
     scene_choice.cpp \
+    score_board.cpp \
     select.cpp \
-    tank.cpp \
+    soccer_mode.cpp \
+    soccer_tank.cpp \
     tank_choice.cpp \
     tankbase.cpp \
     warning.cpp \
     window.cpp
 
 HEADERS += \
+    ball.h \
     bullet.h \
     button.h \
     choice_box_base.h \
-    gamescene.h \
+    conquer_mode.h \
+    fight_tank.h \
     gamewindow.h \
     instruction.h \
+    kill_mode.h \
     menu.h \
     mode_choice.h \
     music.h \
     palse.h \
     scene_choice.h \
+    score_board.h \
     select.h \
-    tank.h \
+    soccer_mode.h \
+    soccer_tank.h \
     tank_choice.h \
     tankbase.h \
     warning.h \
