@@ -2,7 +2,7 @@
 
 const qreal convert = acos(0) / 90;
 
-Bullet::Bullet(QPointF center, qreal heading, QGraphicsItem * _walls[])
+Bullet::Bullet(const QString &img_url, QPointF center, qreal heading, QGraphicsItem * _walls[])
 {
     walls = _walls;
 
@@ -10,9 +10,7 @@ Bullet::Bullet(QPointF center, qreal heading, QGraphicsItem * _walls[])
 
     attack_value = 5;
 
-    item = new QGraphicsPixmapItem;
-    QPixmap img(":/resource/Bullets/bulletGreen.png");
-    item->setPixmap(img);
+    item = new QGraphicsPixmapItem(QPixmap(img_url));
 
     // set initial position
     QPointF cur_center = item->boundingRect().center();

@@ -83,7 +83,7 @@ void GameScene::keyPressEvent(QKeyEvent *event)
 
     case Qt::Key_Q:
         center = tank[0]->item->mapToScene(tank[0]->item->boundingRect().center());
-        bullets.push_back(Bullet(center, tank[0]->heading, walls));
+        bullets.push_back(tank[0]->new_bullet());
         this->addItem(bullets.back().item);
         break;
 
@@ -102,7 +102,7 @@ void GameScene::keyPressEvent(QKeyEvent *event)
 
     case Qt::Key_U:
         center = tank[1]->item->mapToScene(tank[1]->item->boundingRect().center());
-        bullets.push_back(Bullet(center, tank[1]->heading, walls));
+        bullets.push_back(tank[1]->new_bullet());
         this->addItem(bullets.back().item);
         break;
     }

@@ -12,7 +12,7 @@
 class Bullet
 {
 public:
-    Bullet(QPointF center, qreal heading, QGraphicsItem* []);
+    Bullet(const QString &img_url, QPointF center, qreal heading, QGraphicsItem* []);
     qreal vx, vy, speed;
     QGraphicsPixmapItem *item;
     QGraphicsItem **walls;

@@ -78,7 +78,7 @@ Select::Select(GameWindow *_ui, QGraphicsScene *_menu, QObject *parent) : QGraph
     title->setFont(QFont("KaiTi", 30));
     title->setPos(300, 100);
 
-    instr_l = new QGraphicsTextItem("红色边框为1P\n黄色边框为2P\n1P使用WASD键操控\n2P使用方向键操控");
+    instr_l = new QGraphicsTextItem("红色边框为1P\n黄色边框为2P\n1P使用WASDQ键操控\n2P使用IJKLU键操控");
     this->addItem(instr_l);
     instr_l->setFont(QFont("KaiTi", 15, -1, true));
     instr_l->setPos(100, 400);

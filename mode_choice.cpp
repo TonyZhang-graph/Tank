@@ -14,7 +14,7 @@ bool Mode_Choice::chosen = 0;
 QString Mode_Choice::chosen_style = QString("QPushButton{background-color: white; text-align: center; color: black;}");
 
 QString Mode_Choice::default_style = QString("QPushButton{background-color: black; text-align: center; color: white;}"
-                                             "QPushButton:hover{background-color: purple; text-align: center; color: orange;}");
+                                             "QPushButton:hover{background-color: grey; text-align: center; color: orange;}");
 
 QString Mode_Choice::chose_type = "";
 

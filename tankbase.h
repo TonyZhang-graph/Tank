@@ -9,6 +9,8 @@
 #include <QString>
 #include <QPainter>
 
+#include "bullet.h"
+
 class tankbase
 {
 public:
@@ -34,6 +36,8 @@ public:
     bool is_dead();
     void hurted(const qint8 &attack_value);
     QPixmap img_with_blood_box(QPixmap img);
+    virtual Bullet new_bullet() = 0;
+
 };
 
 #endif // TANKBASE_H
