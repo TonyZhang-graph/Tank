@@ -46,16 +46,29 @@ void GameScene::refresh() {
     tank[1]->refresh();
 
     // refresh bullets
-    QList<Bullet>::iterator it;
-    for (it = bullets.begin(); it != bullets.end(); ++it) {
+    for(auto it = bullets.begin(); it != bullets.end();)
+    {
         it->refresh();
 
-        if (it->time == 3)
+        if(it->time == 3)
         {
             this->removeItem(it->item);
-            bullets.erase(it);
+            it = bullets.erase(it);
+        }
+        else
+        {
+            ++it;
         }
     }
+//    for (it = bullets.begin(); it != bullets.end(); ++it) {
+//        it->refresh();
+
+//        if (it->time == 3)
+//        {
+//            bullets.erase(it);
+//            this->removeItem(it->item);
+//        }
+//    }
 }
 
 void GameScene::keyPressEvent(QKeyEvent *event)

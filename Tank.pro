@@ -23,6 +23,7 @@ SOURCES += \
     music.cpp \
     palse.cpp \
     scene_choice.cpp \
+    score_board.cpp \
     select.cpp \
     soccer_mode.cpp \
     soccer_tank.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     music.h \
     palse.h \
     scene_choice.h \
+    score_board.h \
     select.h \
     soccer_mode.h \
     soccer_tank.h \

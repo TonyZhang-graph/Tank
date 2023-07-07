@@ -8,8 +8,8 @@ Ball::Ball(QGraphicsItem *_walls[], Soccer_Tank **_tank)
     speed = 1;
     tank = _tank;
 
-    qreal centerX = 200;
-    qreal centerY = 50;
+    qreal centerX = 484;
+    qreal centerY = 484;
     qreal radius = 20;
     qreal heading = 90;
 
@@ -37,6 +37,7 @@ bool Ball::collide_with_walls() {
     }
     return false;
 }
+
 bool Ball::collide_with_line(const QLineF &line)
 {
     QGraphicsLineItem l(line);
@@ -138,4 +139,9 @@ void Ball::reflect(const QLineF &a_wall)
     vy = -cos(newheading * convert) * speed;
     item->setTransformOriginPoint(item->boundingRect().center());
     item->setRotation(newheading);
+}
+
+Ball::~Ball()
+{
+    delete item;
 }

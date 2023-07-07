@@ -11,12 +11,14 @@
 
 #include <QString>
 #include <QGraphicsTextItem>
-#include <QList>
+#include <list>
 
 #include "bullet.h"
 #include "tank.h"
 #include "palse.h"
 #include "gamewindow.h"
+#include "score_board.h"
+#include "warning.h"
 
 class GameScene : public QGraphicsScene
 {
@@ -27,7 +29,7 @@ public:
     QGraphicsPixmapItem *background;
 
     QGraphicsItem* walls[40] = {NULL};
-    QList<Bullet> bullets;
+    std::list<Bullet> bullets;
 
     QTimer *refresh_timer;
 
