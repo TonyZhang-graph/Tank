@@ -49,10 +49,15 @@ void Bullet::refresh() {
         {
             QRectF wallRect=walls[i]->boundingRect();
 
-            QLineF topEdge(wallRect.topLeft(), wallRect.topRight());
-            QLineF rightEdge(wallRect.topRight(), wallRect.bottomRight());
-            QLineF bottomEdge(wallRect.bottomRight(), wallRect.bottomLeft());
-            QLineF leftEdge(wallRect.bottomLeft(), wallRect.topLeft());
+            QPointF top_left(walls[i]->mapToScene(wallRect.topLeft()));
+            QPointF top_right(walls[i]->mapToScene(wallRect.topRight()));
+            QPointF bottom_left(walls[i]->mapToScene(wallRect.bottomLeft()));
+            QPointF bottom_right(walls[i]->mapToScene(wallRect.bottomRight()));
+
+            QLineF topEdge(top_left, top_right);
+            QLineF rightEdge(top_right, bottom_right);
+            QLineF bottomEdge(bottom_right, bottom_left);
+            QLineF leftEdge(bottom_left, top_left);
 
             if (collide_with_line(topEdge))
             {

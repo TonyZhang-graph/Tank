@@ -26,7 +26,7 @@ public:
 
     static QMap<QString, Qt::GlobalColor> colors;
 
-    void change_color();
+    bool change_color();
 };
 
 #endif // TILE_H

@@ -27,16 +27,16 @@ Tile::Tile(tankbase **_tanks)
     item = new QGraphicsPixmapItem(*pixmap);
 }
 
-void Tile::change_color()
+bool Tile::change_color()
 {
     bool conquered[2];
     for(int i = 0; i < 2; ++i)
     {
         conquered[i] = tanks[i]->item->collidesWithItem(item);
     }
-    if(conquered[0] == conquered[1])
+    if(conquered[0] == conquered[1] || conquered[conquer - 1])
     {
-        return;
+        return 0;
     }
     conquer = conquered[0] ? 1 : 2;
 
@@ -49,6 +49,8 @@ void Tile::change_color()
     delete painter;
 
     item->setPixmap(*pixmap);
+
+    return 1;
 }
 
 //Tile::~Tile()

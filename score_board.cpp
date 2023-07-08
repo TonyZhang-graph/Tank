@@ -26,7 +26,9 @@ void Score_Board::zero_sum_gain_score(const qint8 &player)
     {
         return;
     }
-    ++score[player], --score[player];
+    ++score[player];
+    --score[player ^ 1];
+    this->setText(scores());
 }
 
 int Score_Board::game_over()

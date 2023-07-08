@@ -16,7 +16,7 @@ struct Map
     int x[20], y[20];
     int heading[20];
 
-    static QString type_to_url[8];
+    static QString type_to_url[11];
 
     void load(QGraphicsScene *scene, QGraphicsItem **walls, QGraphicsPixmapItem *record);
 };

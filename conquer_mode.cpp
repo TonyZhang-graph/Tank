@@ -96,7 +96,10 @@ void Conquer_Mode::refresh() {
     for(int i = 0; i < 49; ++i)
     {
         bool conquered = tiles[i]->conquer;
-        tiles[i]->change_color();
+        if(tiles[i]->change_color() == 0)
+        {
+            continue;
+        }
         if(conquered)
         {
             score_board->zero_sum_gain_score(tiles[i]->conquer - 1);
