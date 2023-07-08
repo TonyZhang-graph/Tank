@@ -7,6 +7,8 @@ Mode_Choice::Mode_Choice(const QString &_mode_name, QWidget *parent) : QPushButt
     this->setFixedSize(100, 100);
     this->setText(mode_name);
     this->setStyleSheet(default_style);
+
+    be_chosen = 0;
 }
 
 bool Mode_Choice::chosen = 0;
@@ -24,14 +26,14 @@ void Mode_Choice::mousePressEvent(QMouseEvent *event)
     {
         return;
     }
-    if(be_chosen == -1 && chosen)
+    if(!be_chosen && chosen)
     {
         return;
     }
     if(chosen)
     {
         this->setStyleSheet(default_style);
-        be_chosen = -1, chosen = 0;
+        be_chosen = chosen = 0;
         chose_type = "";
     }
     else

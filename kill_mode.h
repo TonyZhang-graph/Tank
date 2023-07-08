@@ -25,7 +25,7 @@ class Kill_Mode : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    explicit Kill_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_url, QString *tanks, QObject *parent = nullptr);
+    explicit Kill_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_url, const QString &map_url, QString *tanks, QObject *parent = nullptr);
     ~Kill_Mode();
 
     QGraphicsPixmapItem *background;

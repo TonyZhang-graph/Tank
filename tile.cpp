@@ -18,7 +18,7 @@ Tile::Tile(tankbase **_tanks)
 
     QPainter *painter = new QPainter(pixmap);
 
-    painter->setBrush(QBrush(Qt::transparent));
+    painter->setBrush(QBrush(Qt::white));
 
     painter->drawRect(1, 1, length - 1, length - 1);
 

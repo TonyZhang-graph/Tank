@@ -1,6 +1,6 @@
 #include "conquer_mode.h"
 
-Conquer_Mode::Conquer_Mode(GameWindow *_ui, QGraphicsScene *_menu, QString *tanks, QObject *parent) : QGraphicsScene{parent}
+Conquer_Mode::Conquer_Mode(GameWindow *_ui, QGraphicsScene *_menu, QString *tanks, const QString &map_url, QObject *parent) : QGraphicsScene{parent}
 {
     // tank
     tank[0] = Tank(tanks[0].mid(21, 1), walls);
@@ -32,7 +32,7 @@ Conquer_Mode::Conquer_Mode(GameWindow *_ui, QGraphicsScene *_menu, QString *tank
 
     // load map
     Map map;
-    QFile file(":/resource/Maps/map1.map");
+    QFile file(map_url);
     file.open(QIODevice::ReadOnly);
     QDataStream mapfile(&file);
     mapfile.readRawData((char*) &map, sizeof(map));

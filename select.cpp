@@ -36,9 +36,9 @@ Select::Select(GameWindow *_ui, QGraphicsScene *_menu, QObject *parent) : QGraph
     tank_red->setPos(525, 500);
 
     // scene choices
-    _dirt = new Scene_Choice(":/resource/Environment/dirt.png");
-    _sand = new Scene_Choice(":/resource/Environment/sand.png");
-    _grass = new Scene_Choice(":/resource/Environment/grass.png");
+    _dirt = new Scene_Choice(":/resource/Environment/dirt.png", ":/resource/Maps/map1.map");
+    _sand = new Scene_Choice(":/resource/Environment/sand.png", ":/resource/Maps/map1.map");
+    _grass = new Scene_Choice(":/resource/Environment/grass.png", ":/resource/Maps/map1.map");
 
     dirt = this->addWidget(_dirt);
     sand = this->addWidget(_sand);
@@ -119,11 +119,11 @@ void Select::go_to_game()
     }
     if(mode_chosen == "击杀")
     {
-        ui->set_scene(new Kill_Mode(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
+        ui->set_scene(new Kill_Mode(ui, menu, Scene_Choice::chose_url, Scene_Choice::map_url, Tank_Choice::chose_url));
     }
     if(mode_chosen == "领地")
     {
-        ui->set_scene(new Conquer_Mode(ui, menu, Tank_Choice::chose_url));
+        ui->set_scene(new Conquer_Mode(ui, menu, Tank_Choice::chose_url, Scene_Choice::map_url));
     }
 
     Tank_Choice::reset();

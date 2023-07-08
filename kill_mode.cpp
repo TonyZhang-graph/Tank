@@ -1,6 +1,6 @@
 #include "kill_mode.h"
 
-Kill_Mode::Kill_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_url, QString *tanks, QObject *parent) : QGraphicsScene{parent}
+Kill_Mode::Kill_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_url, const QString &map_url, QString *tanks, QObject *parent) : QGraphicsScene{parent}
 {
     QPixmap bg_img(img_url);
 
@@ -36,7 +36,7 @@ Kill_Mode::Kill_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_
 
     // load map
     Map map;
-    QFile file(":/resource/Maps/map1.map");
+    QFile file(map_url);
     file.open(QIODevice::ReadOnly);
     QDataStream mapfile(&file);
     mapfile.readRawData((char*) &map, sizeof(map));

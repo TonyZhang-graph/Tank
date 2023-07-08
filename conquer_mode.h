@@ -26,7 +26,7 @@ class Conquer_Mode : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    explicit Conquer_Mode(GameWindow *_ui, QGraphicsScene *_menu, QString *tanks, QObject *parent = nullptr);
+    explicit Conquer_Mode(GameWindow *_ui, QGraphicsScene *_menu, QString *tanks, const QString &map_url, QObject *parent = nullptr);
     ~Conquer_Mode();
 
     Tile *tiles[49];
