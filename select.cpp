@@ -62,7 +62,7 @@ Select::Select(GameWindow *_ui, QGraphicsScene *_menu, QObject *parent) : QGraph
     // mode choice
     _kill = new Mode_Choice("击杀模式");
     _kick = new Mode_Choice("踢球模式");
-    _conquer = new Mode_Choice("夺棋模式");
+    _conquer = new Mode_Choice("领地模式");
 
     kill = this->addWidget(_kill);
     kick = this->addWidget(_kick);
@@ -117,10 +117,13 @@ void Select::go_to_game()
     {
         ui->set_scene(new Soccer_Mode(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
     }
-    else
+    if(mode_chosen == "击杀")
     {
-        // to be completed
         ui->set_scene(new Kill_Mode(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
+    }
+    if(mode_chosen == "领地")
+    {
+        ui->set_scene(new Conquer_Mode(ui, menu, Tank_Choice::chose_url));
     }
 
     Tank_Choice::reset();

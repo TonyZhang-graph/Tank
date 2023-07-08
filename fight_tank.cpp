@@ -1,10 +1,10 @@
 #include "fight_tank.h"
 
-Tank_Blue::Tank_Blue(QGraphicsItem **walls) : tankbase(0.7, 10, ":/resource/Tanks/tankBlue.png", ":/resource/Bullets/bulletBlue.png", walls) {}
+Tank_Blue::Tank_Blue(QGraphicsItem **walls) : tankbase("blue", 0.7, 10, ":/resource/Tanks/tankBlue.png", ":/resource/Bullets/bulletBlue.png", walls) {}
 
-Tank_Green::Tank_Green(QGraphicsItem **walls) : tankbase(0.5, 20, ":/resource/Tanks/tankGreen.png", ":/resource/Bullets/bulletGreen.png", walls) {}
+Tank_Green::Tank_Green(QGraphicsItem **walls) : tankbase("green", 0.5, 20, ":/resource/Tanks/tankGreen.png", ":/resource/Bullets/bulletGreen.png", walls) {}
 
-Tank_Red::Tank_Red(QGraphicsItem **walls) : tankbase(0.3, 30, ":/resource/Tanks/tankRed.png", ":/resource/Bullets/bulletRed.png", walls) {}
+Tank_Red::Tank_Red(QGraphicsItem **walls) : tankbase("red", 0.3, 30, ":/resource/Tanks/tankRed.png", ":/resource/Bullets/bulletRed.png", walls) {}
 
 tankbase* Tank(const QString &type, QGraphicsItem **walls)
 {

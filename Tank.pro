@@ -20,6 +20,7 @@ SOURCES += \
     kill_mode.cpp \
     main.cpp \
     gamewindow.cpp \
+    map.cpp \
     menu.cpp \
     mode_choice.cpp \
     music.cpp \
@@ -31,6 +32,7 @@ SOURCES += \
     soccer_tank.cpp \
     tank_choice.cpp \
     tankbase.cpp \
+    tile.cpp \
     warning.cpp \
     window.cpp
 
@@ -44,6 +46,7 @@ HEADERS += \
     gamewindow.h \
     instruction.h \
     kill_mode.h \
+    map.h \
     menu.h \
     mode_choice.h \
     music.h \
@@ -55,6 +58,7 @@ HEADERS += \
     soccer_tank.h \
     tank_choice.h \
     tankbase.h \
+    tile.h \
     warning.h \
     window.h
 

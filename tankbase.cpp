@@ -2,7 +2,7 @@
 
 qreal tankbase::convert = acos(0) / 90;
 
-tankbase::tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img_url, const QString &_bullet_url, QGraphicsItem **_walls)
+tankbase::tankbase(const QString &_color, const qreal &_speed, const qint8 &_max_hp, const QString &img_url, const QString &_bullet_url, QGraphicsItem **_walls)
 {
     walls = _walls;
 
@@ -11,6 +11,8 @@ tankbase::tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img
     hp = max_hp;
 
     enemy = nullptr;
+
+    color = _color;
 
     img.load(img_url);
 
@@ -116,6 +118,12 @@ void tankbase::hurted(const qint8 &attack_value)
 void tankbase::set_enemy(tankbase *_enemy)
 {
     enemy = _enemy;
+}
+
+void tankbase::reborn()
+{
+    hp = max_hp;
+    item->setPixmap(img_with_blood_box(img));
 }
 
 tankbase::~tankbase()

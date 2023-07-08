@@ -12,7 +12,7 @@
 class tankbase
 {
 public:
-    tankbase(const qreal &_speed, const qint8 &_max_hp, const QString &img_url, const QString &_bullet_url, QGraphicsItem **_walls);
+    tankbase(const QString &_color, const qreal &_speed, const qint8 &_max_hp, const QString &img_url, const QString &_bullet_url, QGraphicsItem **_walls);
     virtual ~tankbase();
 
     static qreal convert;
@@ -31,6 +31,8 @@ public:
 
     QString bullet_url;
 
+    QString color;
+
     tankbase *enemy;
 
     void refresh();
@@ -39,6 +41,7 @@ public:
     void hurted(const qint8 &attack_value);
     QPixmap img_with_blood_box(QPixmap img);
     void set_enemy(tankbase *_enemy);
+    void reborn();
 };
 
 #endif // TANKBASE_H

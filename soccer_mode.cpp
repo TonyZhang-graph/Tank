@@ -45,6 +45,9 @@ Soccer_Mode::Soccer_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &
     tank[1]->item->setPos(484, 800);
     this->addItem(tank[1]->item);
 
+    tank[0]->set_enemy(tank[1]);
+    tank[1]->set_enemy(tank[0]);
+
     //set ball
     ball = new Ball(walls, tank);
     this->addItem(ball->item);
@@ -52,7 +55,7 @@ Soccer_Mode::Soccer_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &
     // set score board
     score_board = new Score_Board(3);
     score = this->addWidget(score_board);
-    score->setPos(15, 15);
+    score->setPos(0, 0);
 
     // set menu
     ui = _ui;

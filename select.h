@@ -18,6 +18,7 @@
 #include "tankbase.h"
 #include "soccer_mode.h"
 #include "kill_mode.h"
+#include "conquer_mode.h"
 
 class Select :public QGraphicsScene
 {

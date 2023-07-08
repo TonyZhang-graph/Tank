@@ -6,7 +6,7 @@ Bullet::Bullet(const QString &img_url, QPointF center, qreal heading, QGraphicsI
 {
     walls = _walls;
 
-    speed = 1;
+    speed = 1.5;
 
     attack_value = 5;
 
@@ -36,7 +36,6 @@ bool Bullet::collide_with_walls() {
             return true;
         }
     }
-
     return false;
 }
 

@@ -92,5 +92,6 @@
         <file>resource/Music/happy.wav</file>
         <file>resource/Ball/ball.png</file>
         <file>resource/Ball/SoccerBall.png</file>
+        <file>resource/Maps/map1.map</file>
     </qresource>
 </RCC>

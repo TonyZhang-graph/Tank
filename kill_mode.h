@@ -8,10 +8,10 @@
 #include <QTimer>
 #include <QTransform>
 #include <QKeyEvent>
-
+#include <QGraphicsProxyWidget>
 #include <QString>
 #include <QGraphicsTextItem>
-#include <list>
+#include <QList>
 
 #include "bullet.h"
 #include "fight_tank.h"
@@ -19,28 +19,34 @@
 #include "gamewindow.h"
 #include "score_board.h"
 #include "warning.h"
+#include "map.h"
 
 class Kill_Mode : public QGraphicsScene
 {
     Q_OBJECT
 public:
     explicit Kill_Mode(GameWindow *_ui, QGraphicsScene *_menu, const QString &img_url, QString *tanks, QObject *parent = nullptr);
+    ~Kill_Mode();
 
     QGraphicsPixmapItem *background;
 
-    QGraphicsItem* walls[40] = {NULL};
-    std::list<Bullet> bullets;
+    QGraphicsItem *walls[40] = {nullptr};
+    QGraphicsPixmapItem *record;
+
+    QList<Bullet> bullets;
+    tankbase *tank[2];
 
     QTimer *refresh_timer;
 
     GameWindow *ui;
     QGraphicsScene *menu;
 
-    void refresh();
+    Score_Board *score_board;
+    QGraphicsProxyWidget *score;
+
+    virtual void refresh();
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
-
-    tankbase *tank[2];
 signals:
 
 };
