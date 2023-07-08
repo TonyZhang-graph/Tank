@@ -17,7 +17,8 @@
 #include "warning.h"
 #include "tankbase.h"
 #include "soccer_mode.h"
-#include "gamescene.h"
+#include "kill_mode.h"
+#include "conquer_mode.h"
 
 class Select :public QGraphicsScene
 {
@@ -32,9 +33,6 @@ private:
 
     // record the ui
     GameWindow *ui;
-
-    // record the mode
-    GameScene *game;
 
     // the background
     QGraphicsPixmapItem *background;

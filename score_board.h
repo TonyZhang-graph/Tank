@@ -12,13 +12,15 @@ public:
 
     void gain_score(const qint8 &player);
 
+    void zero_sum_gain_score(const qint8 &player);
+
     int game_over();
 
     QString scores();
 
-private:
     qint8 score[2];
 
+private:
     qint8 target;
 };
 

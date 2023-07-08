@@ -8,19 +8,10 @@ Select::Select(GameWindow *_ui, QGraphicsScene *_menu, QObject *parent) : QGraph
     // record the ui
     ui = _ui;
 
-    // initialize the record
-    game = nullptr;
-
     // load background
-    QPixmap bg_img(":/resource/Environment/sky.png");
-    background = new QGraphicsPixmapItem[49];
-    QGraphicsPixmapItem *p_background = background;
-    for(int i = 0; i < 49; ++i, ++p_background)
-    {
-        p_background->setPixmap(bg_img);
-        this->addItem(p_background);
-        p_background->setPos((i % 7) << 7, (i / 7) << 7);
-    }
+    background = new QGraphicsPixmapItem(QPixmap(":/resource/Background/war.png"));
+    this->addItem(background);
+    background->setPos(0, 0);
 
     // tank choices
     _tank_green = new Tank_Choice(":/resource/Tanks/tankGreen.png");
@@ -36,9 +27,9 @@ Select::Select(GameWindow *_ui, QGraphicsScene *_menu, QObject *parent) : QGraph
     tank_red->setPos(525, 500);
 
     // scene choices
-    _dirt = new Scene_Choice(":/resource/Environment/dirt.png");
-    _sand = new Scene_Choice(":/resource/Environment/sand.png");
-    _grass = new Scene_Choice(":/resource/Environment/grass.png");
+    _dirt = new Scene_Choice(":/resource/Environment/dirt.png", ":/resource/Maps/map_dirt.map");
+    _sand = new Scene_Choice(":/resource/Environment/sand.png", ":/resource/Maps/map_sand.map");
+    _grass = new Scene_Choice(":/resource/Environment/grass.png", ":/resource/Maps/map_grass.map");
 
     dirt = this->addWidget(_dirt);
     sand = this->addWidget(_sand);
@@ -62,7 +53,7 @@ Select::Select(GameWindow *_ui, QGraphicsScene *_menu, QObject *parent) : QGraph
     // mode choice
     _kill = new Mode_Choice("击杀模式");
     _kick = new Mode_Choice("踢球模式");
-    _conquer = new Mode_Choice("夺棋模式");
+    _conquer = new Mode_Choice("领地模式");
 
     kill = this->addWidget(_kill);
     kick = this->addWidget(_kick);
@@ -74,19 +65,22 @@ Select::Select(GameWindow *_ui, QGraphicsScene *_menu, QObject *parent) : QGraph
 
     // text
     title = new QGraphicsTextItem("选择模式、坦克与地图");
+    title->setDefaultTextColor(QColorConstants::Red);
     this->addItem(title);
     title->setFont(QFont("KaiTi", 30));
-    title->setPos(300, 100);
+    title->setPos(245, 120);
 
     instr_l = new QGraphicsTextItem("红色边框为1P\n黄色边框为2P\n1P使用WASDQ键操控\n2P使用IJKLU键操控");
+    instr_l->setDefaultTextColor(QColorConstants::Red);
     this->addItem(instr_l);
     instr_l->setFont(QFont("KaiTi", 15, -1, true));
-    instr_l->setPos(100, 400);
+    instr_l->setPos(80, 350);
 
     instr_r = new QGraphicsTextItem("左键点击选择/取消1P\n右键点击/取消2P\n左键点击选择/取消地图\n左键点击选择/取消模式");
+    instr_r->setDefaultTextColor(QColorConstants::Red);
     this->addItem(instr_r);
     instr_r->setFont(QFont("KaiTi", 15, -1, true));
-    instr_r->setPos(650, 400);
+    instr_r->setPos(650, 350);
 }
 
 Select::~Select()
@@ -117,10 +111,13 @@ void Select::go_to_game()
     {
         ui->set_scene(new Soccer_Mode(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
     }
-    else
+    if(mode_chosen == "击杀")
     {
-        // to be completed
-        ui->set_scene(new GameScene(ui, menu, Scene_Choice::chose_url, Tank_Choice::chose_url));
+        ui->set_scene(new Kill_Mode(ui, menu, Scene_Choice::chose_url, Scene_Choice::map_url, Tank_Choice::chose_url));
+    }
+    if(mode_chosen == "领地")
+    {
+        ui->set_scene(new Conquer_Mode(ui, menu, Tank_Choice::chose_url, Scene_Choice::map_url));
     }
 
     Tank_Choice::reset();

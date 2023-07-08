@@ -92,5 +92,15 @@
         <file>resource/Music/happy.wav</file>
         <file>resource/Ball/ball.png</file>
         <file>resource/Ball/SoccerBall.png</file>
+        <file>resource/Background/ball_in.png</file>
+        <file>resource/Background/ball&amp;tank.png</file>
+        <file>resource/Background/gameover.png</file>
+        <file>resource/Background/intro.png</file>
+        <file>resource/Background/pause.png</file>
+        <file>resource/Background/tank_background1.png</file>
+        <file>resource/Background/war.png</file>
+        <file>resource/Maps/map_dirt.map</file>
+        <file>resource/Maps/map_sand.map</file>
+        <file>resource/Maps/map_grass.map</file>
     </qresource>
 </RCC>

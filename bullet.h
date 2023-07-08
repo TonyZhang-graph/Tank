@@ -8,15 +8,19 @@
 #include <QtMath>
 #include <QLineF>
 
+#include "tankbase.h"
+
 class Bullet
 {
 public:
-    Bullet(const QString &img_url, QPointF center, qreal heading, QGraphicsItem* _walls[], const qint8 &_time = 0);
+    Bullet(const QString &img_url, QPointF center, qreal heading, QGraphicsItem* _walls[], tankbase *_enemy, const qint8 &_time = 0);
     qreal vx, vy, speed;
     QGraphicsPixmapItem *item;
     QGraphicsItem **walls;
 
     qint8 attack_value, time;
+
+    tankbase *enemy;
 
     void refresh();
     bool collide_with_walls();

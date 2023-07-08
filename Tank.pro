@@ -14,22 +14,25 @@ SOURCES += \
     bullet.cpp \
     button.cpp \
     choice_box_base.cpp \
-    gamescene.cpp \
+    conquer_mode.cpp \
+    fight_tank.cpp \
     instruction.cpp \
+    kill_mode.cpp \
     main.cpp \
     gamewindow.cpp \
+    map.cpp \
     menu.cpp \
     mode_choice.cpp \
     music.cpp \
-    palse.cpp \
+    pause.cpp \
     scene_choice.cpp \
     score_board.cpp \
     select.cpp \
     soccer_mode.cpp \
     soccer_tank.cpp \
-    tank.cpp \
     tank_choice.cpp \
     tankbase.cpp \
+    tile.cpp \
     warning.cpp \
     window.cpp
 
@@ -38,21 +41,24 @@ HEADERS += \
     bullet.h \
     button.h \
     choice_box_base.h \
-    gamescene.h \
+    conquer_mode.h \
+    fight_tank.h \
     gamewindow.h \
     instruction.h \
+    kill_mode.h \
+    map.h \
     menu.h \
     mode_choice.h \
     music.h \
-    palse.h \
+    pause.h \
     scene_choice.h \
     score_board.h \
     select.h \
     soccer_mode.h \
     soccer_tank.h \
-    tank.h \
     tank_choice.h \
     tankbase.h \
+    tile.h \
     warning.h \
     window.h
 

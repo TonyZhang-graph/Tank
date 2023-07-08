@@ -12,6 +12,8 @@ Soccer_Tank::Soccer_Tank(const QString &img_url, QGraphicsItem **_walls)
     turning_left = turning_right = false;
 
     speed = 1;
+
+    enemy = nullptr;
 }
 
 bool Soccer_Tank::collide_with_walls()
@@ -57,6 +59,11 @@ void Soccer_Tank::refresh()
             heading -= delta_heading;
             item->setRotation(heading);
         }
+        if(enemy != nullptr && item->collidesWithItem(enemy->item))
+        {
+            heading -= delta_heading;
+            item->setRotation(heading);
+        }
     }
 
     // moving
@@ -71,7 +78,16 @@ void Soccer_Tank::refresh()
         {
             item->setPos(x, y);
         }
+        if(enemy != nullptr && item->collidesWithItem(enemy->item))
+        {
+            item->setPos(x, y);
+        }
     }
+}
+
+void Soccer_Tank::set_enemy(Soccer_Tank *_enemy)
+{
+    enemy = _enemy;
 }
 
 Soccer_Tank::~Soccer_Tank()

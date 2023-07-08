@@ -17,7 +17,7 @@
 #include "ball.h"
 #include "soccer_tank.h"
 #include "gamewindow.h"
-#include "palse.h"
+#include "pause.h"
 #include "score_board.h"
 #include "warning.h"
 

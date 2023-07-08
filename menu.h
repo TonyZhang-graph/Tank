@@ -7,13 +7,13 @@
 #include <QGraphicsProxyWidget>
 #include <QMouseEvent>
 
-#include "gamescene.h"
+#include "kill_mode.h"
 #include "instruction.h"
 #include "music.h"
 #include "select.h"
 #include "gamewindow.h"
 #include "button.h"
-#include "gamescene.h"
+#include "kill_mode.h"
 
 class Menu: public QGraphicsScene
 {

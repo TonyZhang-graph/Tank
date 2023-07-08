@@ -10,6 +10,8 @@
 #include <QString>
 #include <QBrush>
 
+#include "button.h"
+
 class Instruction : public QDialog
 {
     Q_OBJECT
@@ -20,10 +22,11 @@ private:
     static Instruction* p_instance;
 
     // back button
-    static QPushButton* back;
+    static Button *back;
 
     // instruction text
-    static QLabel* instr;
+    static QLabel *instr;
+    static QLabel *label;
 
 public:
     // one instance API
